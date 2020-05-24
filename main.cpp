@@ -1,9 +1,7 @@
-#include <iostream>
+#include "shell.h"
 
-using namespace std;
-
-int main()
-{
-  cout << "Hello World!" << endl;
+int main() {
+  Shell shell;
+  shell.start();
   return 0;
 }
