@@ -191,7 +191,8 @@ void Laba10::task_add_1() {
   std::string text;
   std::getline(std::cin, text);
   std::vector<std::string> words;
-  boost::split(words, text, [](char c) { return c == ' '; });
+  boost::split(words, text,
+               [](char c) { return c == ' '; }); // есть и другой способ
   // Разобьём их на левые и правые и будем искать равенство в левых и правых
   std::vector<float> lnums, rnums;
   char operations[] = "+-*/";
