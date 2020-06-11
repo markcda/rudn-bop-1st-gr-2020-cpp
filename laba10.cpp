@@ -3,7 +3,7 @@
 // Пример 1.
 void Laba10::example1() {
   int cntr = 0;
-  std::cout << "Введите слово из скобок: ";
+  std::cout << "\tВведите слово из скобок: ";
   std::string str;
   std::cin >> str;
   std::cin.get();
@@ -15,9 +15,9 @@ void Laba10::example1() {
         break;
   }
   if (not cntr)
-    std::cout << "Правильное выражение." << std::endl;
+    std::cout << "\tПравильное выражение." << std::endl;
   else
-    std::cout << "Неправильное выражение." << std::endl;
+    std::cout << "\tНеправильное выражение." << std::endl;
 }
 
 /* Упражнение 1. Сложные скобочные выражения.
@@ -31,7 +31,7 @@ void Laba10::exercise1() {
   std::stack<char, std::vector<char>> stack;
   bool err = false;
   const char openers[] = "([{", closers[] = ")]}";
-  std::cout << "Введите слово из скобок: ";
+  std::cout << "\tВведите слово из скобок: ";
   std::string str;
   std::cin >> str;
   std::cin.get();
@@ -55,9 +55,9 @@ void Laba10::exercise1() {
     }
   }
   if (not err)
-    std::cout << "Правильное выражение." << std::endl;
+    std::cout << "\tПравильное выражение." << std::endl;
   else
-    std::cout << "Неправильное выражение." << std::endl;
+    std::cout << "\tНеправильное выражение." << std::endl;
 }
 
 /* Упражнение 2.
@@ -66,7 +66,7 @@ void Laba10::exercise1() {
  * скобочные структуры. */
 void Laba10::exercise2() {
   int n;
-  std::cout << "Введите число n: ";
+  std::cout << "\tВведите число n: ";
   std::cin >> n;
   std::cin.get();
   n *= 2;
@@ -139,13 +139,13 @@ auto Laba10::readGoodWord(decltype(std::string::iterator()) iter,
 
 void Laba10::task1_a() {
   std::string str;
-  std::cout << "Введите слово (без пробелов, состоит только из цифр): ";
+  std::cout << "\tВведите слово (без пробелов, состоит только из цифр): ";
   std::cin >> str;
   std::cin.get();
   if (Laba10::readGoodWord(str.begin(), str.end()) == str.end())
-    std::cout << "Слово хорошее!" << std::endl;
+    std::cout << "\tСлово хорошее!" << std::endl;
   else
-    std::cout << "Слово плохое." << std::endl;
+    std::cout << "\tСлово плохое." << std::endl;
 }
 
 /* б) Решите эту же задачу однопроходным алгоритмом, не используя массивов.
@@ -177,15 +177,15 @@ bool Laba10::readGoodWord() {
 }
 
 void Laba10::task1_b() {
-  std::cout << "Введите слово (без пробелов, состоит только из цифр): ";
+  std::cout << "\tВведите слово (без пробелов, состоит только из цифр): ";
   bool status = Laba10::readGoodWord();
-  std::cout << "Результат: хорошее слово " << (not status ? "не " : "")
+  std::cout << "\tРезультат: хорошее слово " << (not status ? "не " : "")
             << "было найдено." << std::endl;
 }
 
 /* Дополнительное задание 1. Калькулятор выражений в постфиксной нотации. */
 void Laba10::task_add_1() {
-  std::cout << "Введите выражение в постфиксной нотации (используйте числа и "
+  std::cout << "\tВведите выражение в постфиксной нотации (используйте числа и "
                "четыре основные математические операции, разделяйте операнды "
                "пробелами): ";
   std::string text;
@@ -239,6 +239,6 @@ void Laba10::task_add_1() {
       }
     }
   }
-  std::cout << "Результат вычислений: " << rnums.at(rnums.size() - 1)
+  std::cout << "\tРезультат вычислений: " << rnums.at(rnums.size() - 1)
             << std::endl;
 }

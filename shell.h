@@ -2,6 +2,7 @@
 #define SHELL_H
 
 #include "laba10.h"
+#include "laba11.h"
 
 class Shell
 {
@@ -12,6 +13,7 @@ public:
 
 private:
   Laba10 *laba10 = nullptr;
+  Laba11 *laba11 = nullptr;
   void printPrompt();
   void execTask(int task);
 };
