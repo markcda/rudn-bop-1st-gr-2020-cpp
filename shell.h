@@ -3,6 +3,7 @@
 
 #include "laba10.h"
 #include "laba11.h"
+#include "laba12.h"
 
 class Shell
 {
@@ -14,6 +15,7 @@ public:
 private:
   Laba10 *laba10 = nullptr;
   Laba11 *laba11 = nullptr;
+  Laba12 *laba12 = nullptr;
   void printPrompt();
   void execTask(int task);
 };

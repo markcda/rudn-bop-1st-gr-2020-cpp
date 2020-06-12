@@ -16,6 +16,8 @@ void Laba11::example1() {
   std::cout << "\t" << s;
 }
 
+/******************************************************************************/
+
 /* Упражнение 1.1.
  * Добавьте в программу фильтр, позволяющий принимать из потока только буквы
  * латинского алфавита и числа. */
@@ -34,6 +36,8 @@ void Laba11::exercise1_dot1() {
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   std::cout << "\t" << s;
 }
+
+/******************************************************************************/
 
 /* Упражнение 1.2.
  * Добавьте в программу автозамену: при вводе символов "Z" и "9" вместо них
@@ -55,6 +59,8 @@ void Laba11::exercise1_dot2() {
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   std::cout << "\t" << s;
 }
+
+/******************************************************************************/
 
 /* Упражнение 1.3.
  * Замените в операции вывода функцию printf() на putchar() так, чтобы результат
@@ -78,6 +84,8 @@ void Laba11::exercise1_dot3() {
   for (auto ch : s)
     std::putchar(ch);
 }
+
+/******************************************************************************/
 
 /* Упражнение 1.4.
  * Измените код программы так, чтобы все символы выводились в одну строчку, а
@@ -105,6 +113,8 @@ void Laba11::exercise1_dot4() {
       std::putchar('_'); // упражнение не доделано: последний переход строки
                          // тоже заменяется на нижнее подчёркивание
 }
+
+/******************************************************************************/
 
 /* Упражнение 2.1.
  * Введите новые переменные:
@@ -143,6 +153,8 @@ void Laba11::exercise2_dot1() {
   delete file_out;
 }
 
+/******************************************************************************/
+
 /* Упражнение 2.2.
  * Замените в определении переменных file_out и file_in stdout на fopen
  * ("FileOUT.txt", "r"), а stdin - на fopen ("FileIN.txt", "w"). Скопируйте
@@ -170,6 +182,8 @@ void Laba11::exercise2_dot2() {
   file_out.close();
   std::cout << "\tКопирование завершено." << std::endl;
 }
+
+/******************************************************************************/
 
 /* Упражнение 3.
  * Допишите программу следующим образом: после закрытия файла выводится запрос
@@ -223,6 +237,8 @@ void Laba11::exercise3() {
   }
 }
 
+/******************************************************************************/
+
 /* Задание 1.
  * В операционной системе MS-DOS первые два байта ЕХЕ-файлов равны
  * 0100110101011010. Это инициалы "MZ" создателя ЕХЕ-формата Марка Збиковски
@@ -250,6 +266,8 @@ void Laba11::task1() {
             << std::endl;
 }
 
+/******************************************************************************/
+
 /* Задание 2.
  * Напишите программу, считывающую содержание текстового файла по строкам и
  * выводящую число символов в строке + первые 10 символов строки, при этом если
@@ -267,7 +285,7 @@ void Laba11::task2() {
     std::istringstream oss(line);
     char ch = ' '; // чтобы предупредить непредсказуемое поведение в случае
                    // пустых строк
-    unsigned short cntr = 0;
+    ushort cntr = 0;
     while ((oss.get(ch)) and (cntr < 10)) {
       std::cout << ch;
       cntr++;
@@ -280,6 +298,8 @@ void Laba11::task2() {
   }
   in.close();
 }
+
+/******************************************************************************/
 
 /* Задание 3.
  * Напишите программу, вычисляющую произведение матриц. При этом исходные
@@ -297,17 +317,18 @@ void Laba11::task3() {
   std::ifstream f1(in1), f2(in2);
   std::string tmp_line;
   int tmp_num;
-  unsigned len_j_1 = 0, len_j_2 = 0;
-  unsigned len_i_1 = 1, len_i_2 = 1;
+  uint len_j_1 = 0, len_j_2 = 0;
+  uint len_i_1 = 1, len_i_2 = 1;
   getline(f1, tmp_line);
-  std::istringstream *oss = new std::istringstream(tmp_line);
-  while (*oss >> tmp_num)
+  std::istringstream *iss = new std::istringstream(tmp_line);
+  while (*iss >> tmp_num)
     len_j_1++;
-  delete oss;
+  delete iss;
   getline(f2, tmp_line);
-  oss = new std::istringstream(tmp_line);
-  while (*oss >> tmp_num)
+  iss = new std::istringstream(tmp_line);
+  while (*iss >> tmp_num)
     len_j_2++;
+  delete iss;
   while (getline(f1, tmp_line))
     len_i_1++;
   while (getline(f2, tmp_line))
@@ -322,34 +343,37 @@ void Laba11::task3() {
               << std::endl;
     f1.close();
     f2.close();
+    std::cin.get();
     return;
   }
   std::string out1;
   std::cout << "\tВведите название для файла c матрицей-продуктом: ";
   std::cin >> out1;
   std::ofstream f3(out1);
-  for (unsigned i_1 = 0; i_1 < len_i_1; i_1++) {
+  for (uint i_1 = 0; i_1 < len_i_1; i_1++) {
     std::vector<int> line_product;
     // заполняем строку нулями
     for (unsigned i = 0; i < len_j_2; i++)
       line_product.push_back(0);
     // проходим по матрицам
-    for (unsigned j_1 = 0; j_1 < len_j_1; j_1++) {
+    for (uint j_1 = 0; j_1 < len_j_1; j_1++) {
       int element_from_first_matrix = 0;
       if (not(f1 >> element_from_first_matrix)) {
         std::cout << "\tОшибка чтения первой матрицы." << std::endl;
         f1.close();
         f2.close();
         f3.close();
+        std::cin.get();
         return;
       }
-      for (unsigned j_2 = 0; j_2 < len_j_2; j_2++) {
+      for (uint j_2 = 0; j_2 < len_j_2; j_2++) {
         int element_from_second_matrix = 0;
         if (not(f2 >> element_from_second_matrix)) {
           std::cout << "\tОшибка чтения второй матрицы." << std::endl;
           f1.close();
           f2.close();
           f3.close();
+          std::cin.get();
           return;
         }
         line_product[j_2] +=
@@ -364,7 +388,10 @@ void Laba11::task3() {
   }
   f3.close();
   std::cout << "\tПроизведение матриц вычислено." << std::endl;
+  std::cin.get();
 }
+
+/******************************************************************************/
 
 /* Задание 4.
  * Напишите программу, которая воспринимает входные данные как поток символов и
@@ -379,11 +406,14 @@ void Laba11::about_each_symbol_in_string(const std::string &s) {
   for (auto ch : s) {
     std::string r;
     if (ch == '\n')
-      r = "\'\\n";
+      r = "\'\\n'";
     else if (ch == '\t')
-      r = "\'\\t";
-    else if (ch >= ' ')
-      r = '\'' + ch + '\'';
+      r = "\'\\t'";
+    else if (ch >= ' ') {
+      r = "'";
+      r += ch;
+      r += "\'";
+    }
     else
       r = "???";
     std::cout << "\t" << r << " " << int(ch) << std::endl;

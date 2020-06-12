@@ -3,11 +3,13 @@
 Shell::Shell() {
   laba10 = new Laba10();
   laba11 = new Laba11();
+  laba12 = new Laba12();
 }
 
 Shell::~Shell() {
   delete laba10;
   delete laba11;
+  delete laba12;
 }
 
 void Shell::start() {
@@ -27,8 +29,7 @@ void Shell::start() {
 }
 
 void Shell::printPrompt() {
-  using Out = void (*)(const char str[]);
-  Out out = [](const char str[]) { std::cout << str << std::endl; };
+  auto out = [](const char str[]) { std::cout << str << std::endl; };
   out("Привет! Выбери задание, которое хочешь проверить:");
   out(" 0) Выход");
   out(" 1) [Лаба 10] Пример 1 - Простые скобочные выражения");
@@ -50,6 +51,10 @@ void Shell::printPrompt() {
   out("16) [Лаба 11] Задание 2 - Вывод по 10 символов строки");
   out("17) [Лаба 11] Задание 3 - Перемножение матриц");
   out("18) [Лаба 11] Задание 4 - Код каждого введённого символа");
+  out("19) [Лаба 12] Задание 1 - Класс двух переменных");
+  out("20) [Лаба 12] Задание 2 - Класс многочленов");
+  out("21) [Лаба 12] Задание 3 - Класс векторов в V3");
+  out("22) [Лаба 12] Задание 4 - Класс матриц");
   std::cout << ">>> ";
 }
 
@@ -108,6 +113,18 @@ void Shell::execTask(int task) {
     break;
   case 18:
     laba11->task4();
+    break;
+  case 19:
+    laba12->task1();
+    break;
+  case 20:
+    laba12->task2();
+    break;
+  case 21:
+    laba12->task3();
+    break;
+  case 22:
+    laba12->task4();
     break;
   }
 }
