@@ -282,11 +282,11 @@ void Laba11::task2() {
   std::string line;
   while (getline(in, line)) {
     std::cout << "\t";
-    std::istringstream oss(line);
+    std::istringstream iss(line);
     char ch = ' '; // чтобы предупредить непредсказуемое поведение в случае
                    // пустых строк
     ushort cntr = 0;
-    while ((oss.get(ch)) and (cntr < 10)) {
+    while ((iss.get(ch)) and (cntr < 10)) {
       std::cout << ch;
       cntr++;
     }
@@ -297,6 +297,7 @@ void Laba11::task2() {
     std::cout << std::endl;
   }
   in.close();
+  std::cin.get();
 }
 
 /******************************************************************************/
