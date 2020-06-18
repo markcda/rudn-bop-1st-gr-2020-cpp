@@ -186,3 +186,23 @@ void Laba12::task4() {
   std::cout << "\tПродукт умножения (m2 * m1):" << std::endl;
   (matrices[1] * matrices[0]).print();
 }
+
+void Laba12::examenation_task1() {
+  std::ofstream f("OUTPUT.TXT");
+  std::string str;
+  std::cout << "\tВведите 9 цифр: ";
+  std::cin >> str;
+  int sum = 0;
+  for (ushort i = 0; i < 9; i++) {
+    std::cout << "\t  " << int(str[i] - '0') << " " << str[i] << std::endl;
+    sum += int(str[i] - '0') * (10 - i);
+  }
+  for (ushort i = 0; i < 10; i++)
+    if ((sum + i) % 11 == 0) {
+      f << str << std::to_string(i) << std::endl;
+      std::cout << "\t" << str << std::to_string(i) << std::endl;
+      f.close();
+      break;
+    }
+  std::cin.get();
+}

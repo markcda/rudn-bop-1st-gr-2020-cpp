@@ -55,6 +55,7 @@ void Shell::printPrompt() {
   out("20) [Лаба 12] Задание 2 - Класс многочленов");
   out("21) [Лаба 12] Задание 3 - Класс векторов в V3");
   out("22) [Лаба 12] Задание 4 - Класс матриц");
+  out("23) [Лаба 12] Экзаменационная задача - Вычисление ISBN");
   std::cout << ">>> ";
 }
 
@@ -125,6 +126,9 @@ void Shell::execTask(int task) {
     break;
   case 22:
     laba12->task4();
+    break;
+  case 23:
+    laba12->examenation_task1();
     break;
   }
 }

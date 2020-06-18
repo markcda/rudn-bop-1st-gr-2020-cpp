@@ -13,6 +13,7 @@ public:
   static void task2();
   static void task3();
   static void task4();
+  static void examenation_task1();
 };
 
 #endif // LABA12_H
